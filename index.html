@@ -8,44 +8,50 @@
 *:before,
 *:after {
     padding: 0;
-    margin: 0;
+    margin: 0;        
     box-sizing: border-box;
 }
 
 body {
     background: auto;
-    background-color: auto;
-    color: auto;
+    background-color: #000;
+    color: #fff;
+    
 }
 
 .container {
-    width: 40%;
-    min-width: 90%;    
+    background-color: #212121;
+    width: 45%;
+    font-weight: 500;
+    min-width: 95%;    
     position: relative;
     transform: translate(-50%, -50%);    
     margin-top: 50%;
     left: 50%;
-    padding: 20px 10px;
+    padding: 10px;
     padding-bottom: 10px;
+    border: solid 2px #323233;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.338);
 }
 
 
 .timer-display {
+    background-color: #212121;
+    color: #F7931A;
     position: relative;
-    width: 92%;
-    
+    width: 97%; 
     left: 4%;
     font-family: "Inter", sans-serif;
     font-size: 1em;
     font-weight: 500;
-    padding: auto 10px auto 10px;
+    padding: 10px;
     display: flex;
     margin-top: 10px;
     margin-bottom: 10px;
     align-items: center;
     justify-content: space-around;
+    border: solid 2px #323233;
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(65, 5, 145, 0.25);
 }
@@ -60,9 +66,9 @@ body {
 .buttons button {
     width: 120px;
     height: 45px;
-    background-color: #8c52ff;
-    color: #fff;
-    border: none;
+    background-color: #212121;
+    color: #4285F4;
+    border: solid 2px #323233;
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
     border-radius: 5px;
@@ -75,24 +81,34 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
 .span {
-    color: green;
+    color: #4285F4;
+}
+.mined {
+    color: #fff;
+    margin-left: 5px;
+    margin-right: 10px;
+     font-size: 1.50em;
+    font-weight: 500;
+    border: solid 2px #323233;
+    border-radius: 5px;
+     padding: 10px
+    
 }
     </style>
 </head>
 <body>
     <div class="container">
-        <h5> &#128640 &#128640 mining machine dashboard
+        &#128640&#128640Basic speed: 1000 H/s 
         <div class="timer-display">
            <div class="buttons">
-            <button id="start-timer">start</button>
+            <button id="start-timer">&#9923 start</button>
             200 H/s
         </div>
         </div>
         <div class="buttons"> 
-            <button id="reset-timer" class="buttonn" onclick="cash()">withdraw</button>
-        <span id="name-error"> lowest: 24$ highest: 200$</span>            
+            <button id="reset-timer" class="buttonn" onclick="cash()">withdraw&#x26B6</button>
+        <span id="name-error"></span>            
     </div>
-    </h5>
     </div>
     <script>
         var nameError = document.getElementById('name-error');
@@ -105,26 +121,27 @@ document.getElementById("start-timer").addEventListener("click", () => {
     if(int !== null) {
         clearInterval(int);
     }
-    int = setInterval(displayTimer, 10);
+    int = setInterval(displayTimer, 1000);
 }); 
 
 function displayTimer() {
-    milliseconds += 10;
-    if(milliseconds == 1000) {
+    milliseconds++;
+    if(milliseconds == 1) {
         milliseconds = 0;
         seconds++;
-        if(seconds == 60) {
+        if(seconds == 5) {
             seconds = 0;
             minutes++;
-            if(minutes == 36) {
+            if(minutes == 5) {
                 minutes = 0;
                 hours++;
-                if(hours == 20) {
+                if(hours == 2) {
                 hours = 0;
                 dates++;
                 dates += 9;
-                if(dates == 1) {
+                if(dates == 10) {
               nameError.innerHTML = 'withdow now &#9889';
+              return true;
                 }
               }  
             }
@@ -133,7 +150,7 @@ function displayTimer() {
     let d = dates < 10 ? "" + dates : dates;
     let h = hours < 10 ? "" + hours : hours;
     let m = minutes < 10 ? "" + minutes : minutes;
-    let s = seconds < 10 ? "0" + seconds : seconds;
+    let s = seconds < 10 ? "&#9935:0" + seconds : seconds;
     let ms = 
         milliseconds < 10
         ? "00" + milliseconds
@@ -141,17 +158,18 @@ function displayTimer() {
         ? "0" + milliseconds
         : milliseconds;
 
-    timeRef.innerHTML = `Basic speed: 1000 H/s ${s}${ms}
-<br>&#9935 mined $${h}.${m}            <br><span class="span">total earnings: $${d}</span>`;
+    timeRef.innerHTML = `<span class="span">${s}${ms}</span>
+<br> <span class="mined">$${h}.${m}</span><br>total &#9923&#9922 earnings:<span class="span"><br>$${d}</span>`;
 }
 function cash(){
    if (!dates){
    event.preventDefault();
-  nameError.innerHTML = '	&#x26A0 mined at least 24$';
+  nameError.innerHTML = '	&#x26A0 earn at least 2$, your total earnings: $0';
         return false;
     }
     else if(dates){
-    window.location.assign("https://opaying-online.github.io/two/");
+    
+     nameError.innerHTML = '	please wait. adding earnings to balance ';  window.location.assign("https://google.com");
         return true;
         }
 }
