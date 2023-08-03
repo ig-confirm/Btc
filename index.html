@@ -129,17 +129,17 @@ function displayTimer() {
     if(milliseconds == 1) {
         milliseconds = 0;
         seconds++;
-        if(seconds == 5) {
+        if(seconds == 2) {
             seconds = 0;
             minutes++;
-            if(minutes == 5) {
+            if(minutes == 2) {
                 minutes = 0;
                 hours++;
-                if(hours == 2) {
+                if(hours == 3) {
                 hours = 0;
                 dates++;
-                dates += 9;
-                if(dates == 10) {
+                dates += 2;
+                if(dates == 3) {
               nameError.innerHTML = 'withdow now &#9889';
               return true;
                 }
